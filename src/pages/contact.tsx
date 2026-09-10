@@ -1,3 +1,5 @@
+import { usePageTitle } from '../router'
+
 type Contact = { label: string; value: string; href: string }
 
 const contacts: Contact[] = [
@@ -8,6 +10,7 @@ const contacts: Contact[] = [
 ]
 
 export function ContactPage() {
+  usePageTitle('Contacto — Delcio Monarca')
   return <section className="inner-page contact-page">
     <p className="page-label">04 — CONTACTO</p>
     <h1>Vamos conversar<br /><i>sobre o seu projeto.</i></h1>

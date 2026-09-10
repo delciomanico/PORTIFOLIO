@@ -4,7 +4,7 @@ import { AboutPage } from './pages/about'
 import { ProjectPage } from './pages/projects'
 import { SkillsPage } from './pages/skills'
 import { ContactPage } from './pages/contact'
-import { Link, usePathname } from './router'
+import { Link, usePathname, usePageTitle } from './router'
 
 const Arrow = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
 
@@ -16,6 +16,7 @@ const homeSlides = [
  ]
 
 function HomePage() {
+  usePageTitle('Delcio Monarca — Desenvolvedor Backend & Fullstack')
   return <section className="home page">
     <div className="home-content">
       <p className="kicker">DESENVOLVEDOR BACKEND · FULLSTACK</p>

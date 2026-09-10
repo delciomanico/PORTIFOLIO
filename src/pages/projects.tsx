@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type SyntheticEvent } from 'react'
+import { usePageTitle } from '../router'
 
 const Arrow = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
 
@@ -9,6 +10,30 @@ const CACHE_TTL = 1000 * 60 * 30
 // Overrides the GitHub "homepage" field for repos whose live domain differs from what's set there.
 const DEMO_OVERRIDES: Record<string, string> = {
   bchiwale: 'https://bchiwale.ao',
+}
+
+// mshots generates screenshots async: the first request returns a fixed 400x300
+// "Generating Preview…" placeholder while it renders the page in the background.
+const MSHOTS_PLACEHOLDER_SIZE = { width: 400, height: 300 }
+const MSHOTS_MAX_ATTEMPTS = 6
+const MSHOTS_RETRY_DELAY_MS = 3000
+
+function RepoPreview({ demoUrl, fallbackSrc, alt }: { demoUrl: string | null; fallbackSrc: string; alt: string }) {
+  const [attempt, setAttempt] = useState(0)
+  const usingDemoShot = demoUrl !== null && attempt <= MSHOTS_MAX_ATTEMPTS
+  const src = usingDemoShot
+    ? `https://s.wordpress.com/mshots/v1/${encodeURIComponent(demoUrl!)}?w=1000${attempt > 0 ? `&attempt=${attempt}` : ''}`
+    : fallbackSrc
+
+  const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
+    const img = event.currentTarget
+    const isPlaceholder = img.naturalWidth === MSHOTS_PLACEHOLDER_SIZE.width && img.naturalHeight === MSHOTS_PLACEHOLDER_SIZE.height
+    if (usingDemoShot && isPlaceholder && attempt < MSHOTS_MAX_ATTEMPTS) {
+      setTimeout(() => setAttempt((a) => a + 1), MSHOTS_RETRY_DELAY_MS)
+    }
+  }
+
+  return <img className="gallery-media" src={src} alt={alt} loading="lazy" onLoad={handleLoad} />
 }
 
 type Repo = {
@@ -51,6 +76,7 @@ function writeCache(repos: Repo[]) {
 }
 
 export function ProjectPage() {
+  usePageTitle('Projetos — Delcio Monarca')
   const [state, setState] = useState<FetchState>({ status: 'loading' })
 
   useEffect(() => {
@@ -93,9 +119,11 @@ export function ProjectPage() {
     {state.status === 'ready' && state.repos.length > 0 && <div className="gallery-grid">
       {state.repos.map((repo, index) => {
         const demoHref = DEMO_OVERRIDES[repo.name] ?? repo.homepage
+        const fallbackSrc = `https://opengraph.githubassets.com/1/${repo.full_name}`
+        const visualHref = demoHref ?? repo.html_url
         return <article className="gallery-card" key={repo.id}>
-          <a className="gallery-visual" href={repo.html_url} target="_blank" rel="noreferrer" aria-label={`Ver ${repo.name} no GitHub`}>
-            <img className="gallery-media" src={`https://opengraph.githubassets.com/1/${repo.full_name}`} alt="" loading="lazy" />
+          <a className="gallery-visual" href={visualHref} target="_blank" rel="noreferrer" aria-label={demoHref ? `Ver demo de ${repo.name}` : `Ver ${repo.name} no GitHub`}>
+            <RepoPreview demoUrl={demoHref} fallbackSrc={fallbackSrc} alt={demoHref ? `Captura de ecrã da página inicial de ${repo.name}` : `Página do repositório ${repo.name} no GitHub`} />
             <span>{String(index + 1).padStart(2, '0')}</span>
           </a>
           <div className="gallery-content">
@@ -104,7 +132,9 @@ export function ProjectPage() {
             <p>{repo.description ?? 'Sem descrição.'}</p>
             <div className="project-actions">
               <a className="button" href={repo.html_url} target="_blank" rel="noreferrer">Ver código <Arrow /></a>
-              {demoHref && <a className="secondary-button" href={demoHref} target="_blank" rel="noreferrer">Ver demo</a>}
+              {demoHref
+                ? <a className="secondary-button" href={demoHref} target="_blank" rel="noreferrer">Ver demo</a>
+                : <a className="secondary-button" href={`https://github.com/codespaces/new?repo=${encodeURIComponent(repo.full_name)}`} target="_blank" rel="noreferrer">Abrir ambiente de teste</a>}
             </div>
           </div>
         </article>

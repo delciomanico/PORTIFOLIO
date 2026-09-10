@@ -1,4 +1,7 @@
+import { usePageTitle } from '../router'
+
 export function AboutPage() {
+  usePageTitle('Sobre — Delcio Monarca')
   const experiences = [
     {
       role: 'Desenvolvedor Fullstack',

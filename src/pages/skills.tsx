@@ -1,3 +1,5 @@
+import { usePageTitle } from '../router'
+
 const skills = [
   ['01', 'Backend & APIs', 'APIs RESTful, arquitetura backend e deploy de aplicações com TypeScript, Node.js, NestJS, Next.js e Express.'],
   ['02', 'Infraestrutura & DevOps', 'Administração de servidores Linux, conteinerização com Docker, automação de processos e Git.'],
@@ -14,6 +16,7 @@ const credentials = [
 ]
 
 export function SkillsPage() {
+  usePageTitle('Competências — Delcio Monarca')
   return <section className="inner-page skills-page">
     <p className="page-label">03 — COMPETÊNCIAS</p>
     <h1>Ferramentas para<br />criar o que <i>importa.</i></h1>
