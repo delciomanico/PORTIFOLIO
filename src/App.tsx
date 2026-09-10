@@ -3,6 +3,8 @@ import { SideBar } from './components/sidebar'
 import { AboutPage } from './pages/about'
 import { ProjectPage } from './pages/projects'
 import { SkillsPage } from './pages/skills'
+import { ContactPage } from './pages/contact'
+import { Link, usePathname } from './router'
 
 const Arrow = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
 
@@ -16,10 +18,10 @@ const homeSlides = [
 function HomePage() {
   return <section className="home page">
     <div className="home-content">
-      <p className="kicker">BACKEND DEVELOPER · DEVOPS</p>
+      <p className="kicker">DESENVOLVEDOR BACKEND · FULLSTACK</p>
       <h1>Delcio Monarca</h1>
-      <p className="lead">Construo sistemas robustos, APIs escaláveis e infraestrutura confiável para produtos digitais.</p>
-      <div className="hero-actions"><a className="button" href="/projects">Ver projetos <Arrow /></a><a className="secondary-button" href="mailto:ola@delciomonarca.com">Contactar</a></div>
+      <p className="lead">Construo sistemas robustos e bem estruturados — APIs, bases de dados e automação que melhoram processos e a experiência de quem usa.</p>
+      <div className="hero-actions"><Link className="button" href="/projects">Ver projetos <Arrow /></Link><a className="secondary-button" href="mailto:monarcadev.full@gmail.com">Contactar</a></div>
     </div>
     <div className="home-visual" aria-hidden="true">
       <div className="visual-scroll">
@@ -36,8 +38,8 @@ function HomePage() {
 }
 
 function App() {
-  const pathname = window.location.pathname.replace(/\/$/, '') || '/'
-  const Page = pathname === '/about' ? AboutPage : pathname === '/projects' ? ProjectPage : pathname === '/skills' ? SkillsPage : HomePage
+  const pathname = usePathname()
+  const Page = pathname === '/about' ? AboutPage : pathname === '/projects' ? ProjectPage : pathname === '/skills' ? SkillsPage : pathname === '/contact' ? ContactPage : HomePage
   return <div className="app"><SideBar currentPath={pathname} /><main><Page /></main></div>
 }
 
