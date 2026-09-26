@@ -53,7 +53,7 @@ const ProfileShowcase = ({ className, backgroundImageClassName, profileImageClas
         />
 
         <motion.div
-          className='absolute bottom-0 max-lg:left-1/2 max-lg:-translate-x-1/2'
+          className={cn('absolute inset-y-0 w-full max-lg:left-1/2 max-lg:-translate-x-1/2', profileImageClassName)}
           style={{ x: translateX, y: translateY }}
           whileHover={{ scale: 1.1 }}
           transition={{ scale: { duration: 0.4, ease: 'easeOut' } }}
@@ -61,9 +61,9 @@ const ProfileShowcase = ({ className, backgroundImageClassName, profileImageClas
           onMouseLeave={handleMouseLeave}
         >
           <img
-            src='/images/profile/profile-suit.jpg'
+            src='/images/profile/profile-headshot.jpg'
             alt='Delcio Monarca'
-            className={cn('object-cover', profileImageClassName)}
+            className='size-full object-cover object-top'
           />
         </motion.div>
       </div>

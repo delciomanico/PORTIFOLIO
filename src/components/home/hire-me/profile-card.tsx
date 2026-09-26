@@ -56,7 +56,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
                 <div className='flex grow flex-col items-center gap-4'>
                   <div className='relative'>
                     <Avatar className='size-30'>
-                      <AvatarImage src='/images/profile/profile-desk.png' alt='Delcio Monarca' />
+                      <AvatarImage src='/images/profile/profile-headshot.jpg' alt='Delcio Monarca' />
                       <AvatarFallback>D</AvatarFallback>
                     </Avatar>
                   </div>
@@ -96,7 +96,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
                   I care about robust systems, clean APIs, and automating what slows teams down.
                 </p>
                 <Avatar className='h-24.5 w-20.5 shrink-0 rounded-[12px]'>
-                  <AvatarImage src='/images/profile/profile-suit.jpg' alt='Delcio Monarca' className='rounded-[12px]' />
+                  <AvatarImage src='/images/profile/profile-headshot.jpg' alt='Delcio Monarca' className='rounded-[12px]' />
                   <AvatarFallback>D</AvatarFallback>
                 </Avatar>
               </div>

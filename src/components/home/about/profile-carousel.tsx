@@ -5,6 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const IMAGES = [
+  '/images/profile/profile-headshot.jpg',
   '/images/profile/profile-desk.png',
   '/images/profile/profile-suit.jpg',
   '/images/profile/profile-event.jpg',

@@ -43,7 +43,7 @@ export const SITE_METADATA = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: '/images/profile/profile-suit.jpg',
+        url: '/images/profile/profile-headshot.jpg',
         width: 1200,
         height: 630,
         alt: 'Delcio Monarca - Backend Developer',
@@ -57,7 +57,7 @@ export const SITE_METADATA = {
     creator: '@delciomanico',
     title: 'Delcio Monarca - Backend Developer',
     description: SITE_DESCRIPTION,
-    images: ['/images/profile/profile-suit.jpg']
+    images: ['/images/profile/profile-headshot.jpg']
   },
   verification: {
     google: '', // Add your Google verification code
