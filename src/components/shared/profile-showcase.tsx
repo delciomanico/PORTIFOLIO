@@ -7,7 +7,6 @@ import InstagramIcon from '@/assets/svg/instagram-icon'
 import LinkedinIcon from '@/assets/svg/linkedin-icon'
 
 import { Button } from '@/components/ui/button'
-import AvailabilityBadge from '@/components/shared/availability-badge'
 
 import { cn } from '@/lib/utils'
 
@@ -67,10 +66,6 @@ const ProfileShowcase = ({ className, backgroundImageClassName, profileImageClas
             className={cn('object-cover', profileImageClassName)}
           />
         </motion.div>
-
-        <div className='absolute inset-x-0 bottom-0 flex justify-center'>
-          <AvailabilityBadge className='h-7.5 gap-1.5 rounded-[12px] rounded-b-none border-0 px-3 py-1 text-sm uppercase' />
-        </div>
       </div>
 
       <div className='flex flex-col items-center justify-between gap-1.5 px-5 py-4'>

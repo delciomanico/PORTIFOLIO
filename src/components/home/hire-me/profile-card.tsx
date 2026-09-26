@@ -5,7 +5,6 @@ import { MapPinIcon } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent } from '@/components/ui/card'
-import AvailabilityBadge from '@/components/shared/availability-badge'
 import { cn } from '@/lib/utils'
 
 const STATS = [
@@ -107,8 +106,6 @@ const ProfileCard = ({ className }: { className?: string }) => {
       </motion.div>
 
       <div className='mt-6 space-y-3'>
-        <AvailabilityBadge className='h-6.5 gap-1 rounded-full' />
-
         <p className='mb-2 text-xl font-medium sm:text-2xl lg:text-[30px]'>Hire me today</p>
 
         <p className='text-muted-foreground text-base'>

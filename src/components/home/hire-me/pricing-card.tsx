@@ -1,6 +1,5 @@
 import { ArrowRightIcon } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -27,10 +26,6 @@ const PricingCard = ({ className }: { className?: string }) => {
         </div>
 
         <Separator />
-
-        <Badge variant='secondary' className='text-foreground h-6.5 rounded-full bg-(--background-darker) font-normal'>
-          Available for select projects
-        </Badge>
 
         <ul className='mt-5.5 mb-5.5 grid grid-cols-2 gap-x-4 gap-y-2'>
           {FEATURES.map(feature => (
