@@ -101,12 +101,7 @@ const schemaData = schema || defaultSchema
 <meta property='og:locale' content={SITE_METADATA.locale} />
 <meta http-equiv='content-language' content={SITE_METADATA.language} />
 
-<!-- Favicon and Icons -->
-{SITE_METADATA.icons.icon.map(icon => <link rel='icon' type={icon.type} sizes={icon.sizes} href={icon.url} />)}
-{SITE_METADATA.icons.apple.map(icon => <link rel='apple-touch-icon' sizes={icon.sizes} href={icon.url} />)}
-{SITE_METADATA.icons.shortcut.map(icon => <link rel='shortcut icon' href={icon.url} />)}
 <link rel='manifest' href='/site.webmanifest' />
-
 <!-- Sitemap -->
 <link rel='sitemap' href='/sitemap.xml' />
 
