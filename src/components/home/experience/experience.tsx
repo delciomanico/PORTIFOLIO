@@ -30,7 +30,7 @@ const EXPERIENCES = [
     role: 'Backend Developer',
     period: '2024 -',
     status: { text: 'Present', tone: 'positive' as const },
-    stack: ['Node.js', 'TypeScript', 'REST APIs', 'PostgreSQL'],
+    stack: ['Node.js', 'TypeScript', 'REST APIs', 'Databases'],
     achievement: 'Automated public-service workflows to cut manual bottlenecks',
     description:
       'Working on the digitalization of public services at the Instituto de Planeamento e Gestão Urbana de Luanda — diagnosing organizational bottlenecks and automating processes end to end.'

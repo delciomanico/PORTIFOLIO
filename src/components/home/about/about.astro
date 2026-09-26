@@ -2,9 +2,12 @@
 import { Card, CardContent } from '@/components/ui/card'
 import Eyebrow from '@/components/shared/eyebrow/eyebrow.astro'
 import ProfileCarousel from '@/components/home/about/profile-carousel'
-import MusicPlayerCard from '@/components/home/about/music-player-card'
-import TripFolderCard from '@/components/home/about/trip-folder-card'
-import SurpriseNote from '@/components/home/about/surprise-note'
+
+const FACTS = [
+  { label: 'Focus', value: 'Backend & Fullstack' },
+  { label: 'Location', value: 'Luanda, Angola' },
+  { label: 'Availability', value: 'Selected projects' }
+]
 ---
 
 <section id='about' class='border-b py-8 sm:py-16 lg:py-24'>
@@ -17,16 +20,33 @@ import SurpriseNote from '@/components/home/about/surprise-note'
     <div class='grid grid-cols-1 gap-6 md:grid-cols-[380px_1fr]'>
       <ProfileCarousel client:visible />
 
-      <div class='grid gap-4 md:h-130 lg:grid-cols-2 lg:grid-rows-2'>
-        <MusicPlayerCard client:visible />
+      <div class='grid gap-4 md:h-130 md:grid-rows-2'>
+        <Card className='ring-border rounded-[24px] bg-(--background-darker) shadow-none'>
+          <CardContent className='flex h-full flex-col justify-center gap-4'>
+            <p class='text-lg leading-relaxed'>
+              I turn complex requirements into robust, well-structured systems — APIs, databases, Linux servers, and
+              automation that make products run smoother.
+            </p>
+            <p class='text-muted-foreground leading-relaxed'>
+              My goal is always the same: build solutions that improve the performance and experience of the people
+              who use what I ship.
+            </p>
+            <a class='text-accent w-fit text-base font-medium underline underline-offset-4' href='mailto:monarcadev.full@gmail.com'>
+              Let's work together
+            </a>
+          </CardContent>
+        </Card>
 
-        <TripFolderCard client:visible />
-
-        <Card
-          className='ring-border overflow-visible rounded-[24px] bg-(--background-darker) shadow-none max-lg:hidden max-md:h-70 max-md:min-h-50 sm:col-span-2'
-        >
-          <CardContent className='h-full max-md:px-4'>
-            <SurpriseNote client:visible />
+        <Card className='ring-border rounded-[24px] bg-(--background-darker) shadow-none'>
+          <CardContent className='flex h-full flex-col justify-center gap-4'>
+            {
+              FACTS.map(fact => (
+                <div class='flex items-center justify-between gap-4 border-b py-2 last:border-b-0'>
+                  <span class='text-muted-foreground text-sm'>{fact.label}</span>
+                  <span class='text-base font-medium'>{fact.value}</span>
+                </div>
+              ))
+            }
           </CardContent>
         </Card>
       </div>

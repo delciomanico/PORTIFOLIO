@@ -27,7 +27,7 @@ const SERVICES = [
     title: 'Data & AI Integration',
     image: '/images/services/thumb-03.webp',
     duration: '2 to 5 weeks',
-    tools: ['PostgreSQL', 'Data modeling', 'AI APIs'],
+    tools: ['Databases', 'Data modeling', 'AI APIs'],
     description: 'I model and manage databases, and integrate AI capabilities into fullstack platforms.'
   }
 ]
@@ -116,7 +116,7 @@ const Services = () => {
                       {service.tools.map((tool, toolIndex) => (
                         <span key={tool} className='flex items-center gap-2'>
                           {tool}
-                          {toolIndex < service.tools.length - 1 && <span className='text-accent'>✦</span>}
+                          {toolIndex < service.tools.length - 1 && <span className='text-accent'>&middot;</span>}
                         </span>
                       ))}
                     </p>
