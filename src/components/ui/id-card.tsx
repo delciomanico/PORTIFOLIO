@@ -276,7 +276,7 @@ const Band = ({ frontImage, isMobile }: BandProps) => {
       ctx.drawImage(image, dx, dy, dw, dh)
 
       // Accent stripe across the top edge, matching the site's --accent color.
-      ctx.fillStyle = '#ff5c00'
+      ctx.fillStyle = '#F7DF1E'
       ctx.fillRect(rx, ry, rw, rh * ACCENT_STRIPE_HEIGHT_RATIO)
       ctx.restore()
     }

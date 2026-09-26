@@ -63,7 +63,7 @@ const ServiceStepCard = () => {
   if (bookingName) {
     return (
       <div className='bg-card relative flex min-h-125 flex-col items-center justify-center space-y-4 rounded-3xl p-6 text-center shadow-sm'>
-        <span className='bg-accent mb-7 flex size-18 shrink-0 items-center justify-center rounded-full text-white'>
+        <span className='bg-accent text-accent-foreground mb-7 flex size-18 shrink-0 items-center justify-center rounded-full'>
           <CheckIcon className='size-8' strokeWidth={3} />
         </span>
 
@@ -89,11 +89,11 @@ const ServiceStepCard = () => {
 
   return (
     <div className='bg-card relative overflow-hidden rounded-3xl shadow-sm'>
-      <div className='from-accent relative bg-linear-to-br to-red-600 px-6 pt-6 pb-12'>
+      <div className='from-accent relative bg-linear-to-br to-yellow-500 px-6 pt-6 pb-12'>
         <div className='relative z-10 flex items-start justify-between'>
           <div>
-            <p className='text-primary-foreground dark:text-primary text-xl font-semibold'>{STEP_TITLES[step]}</p>
-            <p className='text-primary-foreground dark:text-primary text-sm'>
+            <p className='text-accent-foreground text-xl font-semibold'>{STEP_TITLES[step]}</p>
+            <p className='text-accent-foreground text-sm'>
               Step {step} of {TOTAL_STEPS}
             </p>
           </div>
@@ -103,7 +103,7 @@ const ServiceStepCard = () => {
               <span
                 key={dotStep}
                 className={cn(
-                  'bg-primary-foreground dark:bg-primary h-1.5 rounded-full transition-all',
+                  'bg-accent-foreground h-1.5 rounded-full transition-all',
                   dotStep === step ? 'w-6 opacity-100' : 'w-1.5 opacity-40'
                 )}
               />
@@ -187,7 +187,7 @@ const ServiceStepCard = () => {
                 disabled={!canAdvance}
                 onClick={() => setStep(current => Math.min(TOTAL_STEPS, current + 1))}
                 className={cn(
-                  'bg-accent hover:bg-accent size-14 rounded-full text-white',
+                  'bg-accent hover:bg-accent text-accent-foreground size-14 rounded-full',
                   !canAdvance && 'bg-muted/50 cursor-not-allowed text-white opacity-100'
                 )}
               >
@@ -199,7 +199,7 @@ const ServiceStepCard = () => {
               <Button
                 type='submit'
                 form='details-form'
-                className='bg-accent hover:bg-accent h-14 w-full rounded-3xl text-base font-medium text-white'
+                className='bg-accent hover:bg-accent text-accent-foreground h-14 w-full rounded-3xl text-base font-medium'
               >
                 Book Appointment
               </Button>
