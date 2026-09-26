@@ -1,0 +1,38 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import ContactHero from '@/components/contact/contact-hero/contact-hero'
+import FeaturedWorks from '@/components/shared/featured-works/featured-works.astro'
+import Services from '@/components/shared/services/services'
+
+import { getCaseStudies } from '@/lib/case-studies'
+
+const caseStudies = await getCaseStudies(2)
+
+const pageTitle = 'Contact'
+const pageDescription = 'Get in touch with Delcio Monarca — backend developer based in Luanda, Angola.'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Delcio Monarca',
+      description: 'Backend developer based in Luanda, Angola.',
+      inLanguage: 'en-US'
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: pageTitle,
+      description: pageDescription
+    }
+  ]
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} schema={schema}>
+  <ContactHero client:load />
+  <FeaturedWorks caseStudies={caseStudies} layout='vertical' title='Have a look at some of my work' />
+  <Services client:visible />
+</Layout>

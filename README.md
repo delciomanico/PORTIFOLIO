@@ -1,76 +1,35 @@
-# React + TypeScript + Vite
+# Delcio Monarca — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of Delcio Monarca, backend developer based in Luanda, Angola.
 
-Currently, two official plugins are available:
+Built with [Astro](https://astro.build), React, and [shadcn/ui](https://ui.shadcn.com), based on the free "Zolt" portfolio template from shadcn Studio (see `LICENSE.md`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting started
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+pnpm install
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Copy `.env.example` to `.env` and set `SITE_URL` to the real production domain before deploying.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `pnpm dev` — start the local dev server
+- `pnpm build` — build the static site
+- `pnpm preview` — preview the production build
+- `pnpm check-types` — type-check the project
+- `pnpm lint` / `pnpm lint:fix` — lint the codebase
 
-```
-"# PORTIFOLIO" 
+## Content
+
+- `src/consts.ts` — site metadata, SEO defaults, and social links
+- `src/components/home/experience/experience.tsx` — work & education timeline
+- `src/content/case-studies/` — case studies (MDX)
+- `src/content/blog/` — blog posts (MDX)
+- `public/images/profile/` — personal photos used across the site
+
+## Known limitations
+
+- The contact form and the "select a service" booking flow are front-end only — there's no email backend wired up yet, so submissions currently only show a confirmation toast without actually sending anything. Wire up a real provider (e.g. Resend, Formspree) before relying on them.
+- The hero 3D ID card, avatars, and "about" carousel use real personal photos, but a few decorative widgets (the music player, trip folder) still use generic placeholder art from the original template.

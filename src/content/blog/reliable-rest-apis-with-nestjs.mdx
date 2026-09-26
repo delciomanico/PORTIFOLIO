@@ -1,0 +1,57 @@
+---
+id: 1
+slug: 'reliable-rest-apis-with-nestjs'
+title: 'Building Reliable REST APIs with NestJS'
+description: 'Practical patterns for structuring backend APIs that stay maintainable as they grow, using NestJS and TypeScript.'
+imageUrl: '/images/features/page-01.webp'
+imageAlt: 'Backend API architecture illustration'
+pubDate: 'January 6, 2026'
+category: 'Backend'
+author: 'Delcio Monarca'
+avatarUrl: '/images/profile/profile-desk.png'
+tags: ['NestJS', 'Node.js', 'APIs']
+featured: false
+---
+
+Some notes on structuring backend APIs so they stay maintainable as a project grows, based on patterns I keep coming back to when building with NestJS and TypeScript.
+
+## Why structure matters early
+
+A REST API that starts simple can turn into a tangle of routes and business logic within a few months if the structure isn't deliberate from the start. Fixing that later is far more expensive than getting the layering right up front.
+
+### Core layers
+
+- Controllers — handle HTTP concerns only
+- Services — hold the business logic
+- Repositories/Providers — talk to the database and external systems
+
+## Keeping modules independent
+
+### Clear module boundaries
+
+Each feature module should expose a small, intentional public interface and keep its internals private — that's what makes it possible to change one module without breaking three others.
+
+### Dependency injection done right
+
+NestJS's DI container is powerful, but it's easy to over-inject and end up with modules that depend on far more than they need. Keeping constructors lean is a good signal that a module's responsibilities are still well scoped.
+
+## Validation and error handling
+
+- Validate at the boundary with DTOs and pipes
+- Fail fast with clear, consistent error responses
+- Keep error handling centralized instead of scattered across controllers
+
+## Testing the layers that matter
+
+### What to test first
+
+- Service-layer business logic
+- Edge cases in validation
+
+### What to automate
+
+- Integration tests against a real database for the paths that matter most in production
+
+## Conclusion
+
+None of this is complicated on its own — the value comes from applying it consistently as an API grows, so the tenth endpoint is exactly as easy to maintain as the first.

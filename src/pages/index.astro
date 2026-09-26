@@ -1,0 +1,42 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Hero from '@/components/home/hero/hero.astro'
+import About from '@/components/home/about/about.astro'
+import FeaturedWorks from '@/components/shared/featured-works/featured-works.astro'
+import Experience from '@/components/home/experience/experience.astro'
+import Services from '@/components/shared/services/services'
+import HireMe from '@/components/home/hire-me/hire-me.astro'
+import SelectService from '@/components/home/select-service/select-service.astro'
+
+import { getCaseStudies } from '@/lib/case-studies'
+
+const caseStudies = await getCaseStudies()
+
+const pageTitle = 'Delcio Monarca - Backend Developer'
+const pageDescription =
+  'Delcio Monarca is a backend developer based in Luanda, Angola, building robust APIs, automation, and AI-integrated systems with Node.js, NestJS, and TypeScript.'
+const pageKeywords = 'backend developer, node.js, nestjs, typescript, apis, devops, angola, portfolio'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Delcio Monarca',
+      description: 'Backend developer based in Luanda, Angola.',
+      inLanguage: 'en-US'
+    }
+  ]
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+  <Hero />
+  <About />
+  <FeaturedWorks caseStudies={caseStudies} />
+  <Experience />
+  <Services client:visible />
+  <HireMe />
+  <SelectService />
+</Layout>

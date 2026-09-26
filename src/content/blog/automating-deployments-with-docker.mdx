@@ -1,0 +1,52 @@
+---
+id: 3
+slug: 'automating-deployments-with-docker'
+title: 'Automating Deployments with Docker and Linux'
+description: 'Why containerizing early and automating the deployment pipeline pays off, even for small backend projects.'
+imageUrl: '/images/features/page-03.webp'
+imageAlt: 'Docker and Linux automation illustration'
+pubDate: 'February 2, 2026'
+category: 'DevOps'
+author: 'Delcio Monarca'
+avatarUrl: '/images/profile/profile-desk.png'
+tags: ['Docker', 'Linux', 'DevOps']
+featured: false
+---
+
+Containerizing a backend project and automating its deployment feels like overhead on day one — it almost always pays for itself by day thirty.
+
+## Why Containerize Early
+
+A container locks in the exact environment your code runs in — no more "works on my machine" surprises when the app moves from a dev laptop to a Linux server.
+
+### Core Benefits
+
+- Reproducible environments across dev, staging, and production
+- Faster onboarding — one command to run the whole stack
+- Easier rollback when a deploy goes wrong
+
+## Structuring a Dockerfile That Doesn't Rot
+
+### Multi-stage builds
+
+Separate the build stage from the runtime stage so the final image only ships what actually needs to run, not the entire toolchain used to build it.
+
+### Layer caching
+
+Order instructions so dependency installation is cached separately from application code — a one-line code change shouldn't force a full dependency reinstall.
+
+## Automating the Pipeline
+
+- Run tests before building the image
+- Build and tag the image automatically on merge
+- Deploy through a repeatable script, not manual server commands
+
+## Server-Side Basics
+
+- Keep the Linux server itself minimal and patched
+- Automate certificate renewal and log rotation
+- Monitor container health, not just whether the process is running
+
+## Conclusion
+
+None of this needs to be elaborate to be worth it. A simple, repeatable pipeline beats a clever one nobody remembers how to run six months later.
